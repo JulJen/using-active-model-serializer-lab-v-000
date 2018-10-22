@@ -10,6 +10,7 @@
 $(function() {
   $(".js-more").on("click", function() {
     var id = $(this).data("id");
+<<<<<<< HEAD
 
     $.get("/products/" + id + ".json", function(data) {
       var product = data;
@@ -28,6 +29,18 @@ $(function() {
         orderList += '<li class="js-order" data-id="' + order["id"] + '">' + order["id"] + ' - ' + order["created_at"] + '</li>';
       });
       $("#product-" + id + "-orders").html(orderList);
+=======
+      $.get("/products/" + id + ".json", function(data) {
+        var inventoryText = "<strong>Available</strong>";
+        if(data["inventory"] > 0) {
+          inventoryText
+        }
+        else {
+          inventoryText = "<strong>Sold Out</strong>";
+        }
+        var descriptionText = "<p>" + data["description"] + "</p><p>" + inventoryText + "</p>";
+        $("#product-" + id).html(descriptionText);
+>>>>>>> b4d2d73116970700a466bdd490facf5d31aeb8bf
     });
   });
 });
